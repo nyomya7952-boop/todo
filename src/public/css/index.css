@@ -1,0 +1,252 @@
+/* Message Container */
+.message__container {
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.message__ok {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+    padding: 10px;
+}
+
+.message__ng {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    padding: 10px;
+}
+
+.message__ng ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+/* Form Container */
+.form__container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.container-title {
+    font-size: 22px;
+    font-weight: bold;
+    width: 67%;
+    margin: 0 auto;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form__group {
+    width: 60%;
+    display: flex;
+    gap: 10px;
+}
+
+.form__group input, select {
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    border: none;
+
+}
+
+.form__group--todo {
+    width: 70%;
+}
+.form__group--category {
+    width: 30%;
+}
+
+.form__group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.form__button-submit {
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+}
+
+.form__button-submit:hover {
+    opacity: 0.8;
+}
+
+/* Search Container */
+.todo__search {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Todo Container */
+.todo__container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.todo__table {
+    width: 70%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table__col--todo {
+    width: 50%;
+}
+
+.table__col--category {
+    width: 30%;
+}
+
+.table__col--update {
+    width: 10%;
+}
+
+.table__col--delete {
+    width: 10%;
+}
+
+.todo__table--row {
+    text-align: left;
+}
+.todo__table--row:first-of-type {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.todo__table--header {
+    padding: 10px;
+    height: 60px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.todo__table--cell {
+    padding: 10px;
+    vertical-align: middle;
+    height: 60px;
+}
+
+.update-form {
+display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.update-form__item {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding: 10px 10px;
+    gap: 10px;
+    box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+}
+
+.update-form__item select {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+}
+
+
+.form__item--todo {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+.form__item--todo input{
+    width: 70%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form__item--category{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+.form__item--category input{
+    width: 70%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+
+    box-sizing: border-box;
+}
+
+.form__button {
+    text-align: right;
+    height: 100%;
+}
+
+.update-form__button-submit {
+    background-color: #0000ff;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+}
+
+.update-form__button-submit:hover {
+    opacity: 0.8;
+}
+
+.delete-form__button-submit {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+}
+
+.delete-form__button-submit:hover {
+    opacity: 0.8;
+}
+
