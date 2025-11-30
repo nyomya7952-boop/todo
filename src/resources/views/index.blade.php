@@ -5,10 +5,10 @@
 @endsection
 @section('message')
 <div class="message__container">
-        @if($errors->has('content'))
+        @if($errors->any())
             <div class="message__ng">
                 <ul>
-                    @foreach($errors->get('content') as $error)
+                    @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
@@ -34,6 +34,17 @@
                     @endforeach
                 </select>
             </span>
+            <span class="form__group--priority">
+                <select name="priority" value="{{ old('priority') }}">
+                    <option value="">優先度を選択</option>
+                    <option value="low">低</option>
+                    <option value="medium">中</option>
+                    <option value="high">高</option>
+                </select>
+            </span>
+            <span class="form__group--due_date">
+                <input type="date" name="due_date" value="{{ old('due_date') }}">
+            </span>
         </div>
         <div class="form__button">
             <button class="form__button-submit" type="submit">作成</button>
@@ -56,6 +67,24 @@
                     @endforeach
                 </select>
             </span>
+            <span class="form__group--priority">
+                <select name="priority" value="{{ old('priority') }}">
+                    <option value="">優先度を選択</option>
+                    <option value="low">低</option>
+                    <option value="medium">中</option>
+                    <option value="high">高</option>
+                </select>
+            </span>
+            <span class="form__group--due_date">
+                <input type="date" name="due_date" value="{{ old('due_date') }}">
+            </span>
+            <span class="form__group--is_completed">
+                <select name="is_completed" value="{{ old('is_completed') }}">
+                    <option value="">未/済を選択</option>
+                    <option value="1">完了</option>
+                    <option value="0">未完了</option>
+                </select>
+            </span>
         </div>
         <div class="form__button">
             <button class="form__button-submit" type="submit">検索</button>
@@ -66,24 +95,50 @@
 
 @section('content_edit')
 <div class="todo__container">
+    <p class="todo__container--count">{{ $todos_count }}件</p>
     <table class="todo__table">
         <colgroup>
+            <col class="table__col--is_completed">
             <col class="table__col--todo">
             <col class="table__col--category">
+            <col class="table__col--priority">
+            <col class="table__col--due_date">
             <col class="table__col--update">
             <col class="table__col--delete">
         </colgroup>
         <tr class="todo__table--row">
+            <th class="todo__table--header">未/済</th>
             <th class="todo__table--header">Todo</th>
             <th class="todo__table--header">カテゴリ</th>
+            <th class="todo__table--header">優先度</th>
+            <th class="todo__table--header">期限日</th>
             <th class="todo__table--header"></th>
             <th class="todo__table--header"></th>
         </tr>
             @foreach ($todos as $todo)
-                <tr class="todo__table--row">
+                @php
+                    $dueDate = $todo['due_date'] ? \Carbon\Carbon::parse($todo['due_date']) : null;
+                    $isCompleted = $todo['is_completed'] ? 1 : 0;
+                    $today = \Carbon\Carbon::today();
+                    $rowClass = '';
+                    if ($dueDate) {
+                        if ($dueDate->isPast() && !$dueDate->isToday() && $isCompleted == 0) {
+                            $rowClass = 'todo__table--row-overdue';
+                        } elseif ($dueDate->isToday() && $isCompleted == 0) {
+                            $rowClass = 'todo__table--row-today';
+                        }
+                    }
+                @endphp
+                <tr class="todo__table--row {{ $rowClass }}">
                     <form class="update-form" action="/todos/update" method="post">
                     @method('PATCH')
                     @csrf
+                        <td class="todo__table--cell">
+                                <div class="update-form__item">
+                                    <input type="hidden" name="is_completed" value="0">
+                                    <input type="checkbox" name="is_completed" value="1" {{ $todo['is_completed'] == 1 ? 'checked' : '' }}>
+                                </div>
+                        </td>
                         <td class="todo__table--cell">
                             <div class="update-form__item">
                                 <input class="form__item--todo" type="text" name="content" value="{{ $todo['content'] }}">
@@ -95,6 +150,20 @@
                                             <option value="{{ $category->id }}" {{ $todo['category_id'] == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                         @endforeach
                                 </select>
+                            </div>
+                        </td>
+                        <td class="todo__table--cell">
+                            <div class="update-form__item">
+                                <select name="priority">
+                                    <option value="low" {{ $todo['priority'] == 'low' ? 'selected' : '' }}>低</option>
+                                    <option value="medium" {{ $todo['priority'] == 'medium' ? 'selected' : '' }}>中</option>
+                                    <option value="high" {{ $todo['priority'] == 'high' ? 'selected' : '' }}>高</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="todo__table--cell">
+                            <div class="update-form__item">
+                                <input type="date" name="due_date" value="{{ $todo['due_date'] }}">
                             </div>
                         </td>
                         <td class="todo__table--cell">
@@ -118,4 +187,5 @@
         @endforeach
     </table>
 </div>
+{{ $todos->links() }}
 @endsection

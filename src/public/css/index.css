@@ -27,14 +27,14 @@
 /* Form Container */
 .form__container {
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     max-width: 1200px;
 }
 
 .container-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
-    width: 67%;
+    width: 77%;
     margin: 0 auto;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .form__group {
-    width: 60%;
+    width: 70%;
     display: flex;
     gap: 10px;
 }
@@ -55,11 +55,21 @@
     border: 1px solid #ddd;
     box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 12px;
     width: 100%;
     height: 100%;
     border: none;
+    appearance: none;
+}
 
+.form__group select {
+    text-align: center;
+    text-align-last: center;
+    padding: 5px 15px;
+}
+
+.form__group select option {
+    text-align: center;
 }
 
 .form__group--todo {
@@ -80,7 +90,7 @@
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
     transition: opacity 0.3s ease;
     box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
@@ -92,44 +102,84 @@
 
 /* Search Container */
 .todo__search {
-    margin: 20px auto;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 10px;
     max-width: 1200px;
 }
 
 /* Todo Container */
 .todo__container {
-    margin: 20px auto;
-    padding: 20px;
+    margin: 10px auto 25px;
+    padding: 15px;
     max-width: 1200px;
 }
 
 .todo__table {
-    width: 70%;
+    width: 85%;
     margin: 0 auto;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
+.table__col--is_completed {
+    width: 6%;
+}
 .table__col--todo {
-    width: 50%;
+    width: 40%;
 }
 
 .table__col--category {
-    width: 30%;
+    width: 13%;
+}
+
+.table__col--priority {
+    width: 7%;
+}
+
+.table__col--due_date {
+    width: 13%;
 }
 
 .table__col--update {
-    width: 10%;
+    width: 8%;
 }
 
 .table__col--delete {
-    width: 10%;
+    width: 8%;
 }
 
 .todo__table--row {
     text-align: left;
 }
+
+.todo__container--count {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.todo__container--count::before {
+    content: "未済：";
+    font-weight: bold;
+}
+
+.todo__table--row-today input,
+.todo__table--row-today select {
+    background-color: #fffacd;
+    color: #e88b09;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.todo__table--row-overdue input,
+.todo__table--row-overdue select {
+    background-color: #ffcccc;
+    color: #e90537;
+    font-weight: 900;
+    border-radius: 4px;
+}
+
 .todo__table--row:first-of-type {
     border-bottom: 1px solid #ddd;
     text-align: left;
@@ -137,19 +187,19 @@
 
 .todo__table--header {
     padding: 10px;
-    height: 60px;
-    font-size: 16px;
+    height: 50px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 .todo__table--cell {
-    padding: 10px;
+    padding: 7px;
     vertical-align: middle;
-    height: 60px;
+    height: 50px;
 }
 
 .update-form {
-display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 5px;
@@ -161,9 +211,26 @@ display: flex;
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    padding: 10px 10px;
+    padding: 5px 8px;
     gap: 10px;
     box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-form__item input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: 11px;
+}
+.update-form__item input[type="checkbox"]:checked {
+    background-color: #0000ff;
+    color: white;
 }
 
 .update-form__item select {
@@ -171,30 +238,43 @@ display: flex;
     height: 100%;
     padding: 0;
     margin: 0;
-    font-size: 14px;
+    font-size: 11px;
+    display: inline-block;
     box-sizing: border-box;
     border: none;
     outline: none;
     box-shadow: none;
     appearance: none;
+    text-align: center;
 }
 
+.update-form__item input[type="date"] {
+    display: inline-block;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 11px;
+}
+.update-form__item input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
 
 .form__item--todo {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 5px;
+    padding: 0;
     box-sizing: border-box;
     border: none;
     outline: none;
+    font-size: 11px;
 }
 .form__item--todo input{
     width: 70%;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-size: 14px;
     box-sizing: border-box;
 }
 
@@ -206,30 +286,35 @@ display: flex;
     box-sizing: border-box;
     border: none;
     outline: none;
+    font-size: 11px;
 }
 .form__item--category input{
     width: 70%;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-size: 14px;
-
     box-sizing: border-box;
 }
 
 .form__button {
     text-align: right;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .update-form__button-submit {
     background-color: #0000ff;
     color: white;
-    padding: 10px 12px;
+    padding: 5px 8px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+    font-size: 11px;
+    height: 80%;
+    width: 80%;
 }
 
 .update-form__button-submit:hover {
@@ -239,14 +324,49 @@ display: flex;
 .delete-form__button-submit {
     background-color: #ff0000;
     color: white;
-    padding: 10px 12px;
+    padding: 5px 8px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 10px 0 rgba(68, 68, 68, 0.218);
+    font-size: 11px;
+    height: 80%;
+    width: 80%;
 }
 
 .delete-form__button-submit:hover {
     opacity: 0.8;
 }
 
+/* ページネーション設定 */
+svg.w-5.h-5,svg.w-5.h-5 path {
+    width: 20px;
+    height: 20px;
+    fill: #100e0e92;
+    stroke: #100e0e92;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+}
+
+nav[role="navigation"] div,
+nav[role="navigation"] span,
+nav[role="navigation"] a,
+nav[role="navigation"] p {
+    font-size: 10px;
+    text-align: center;
+    margin: 0 auto;
+    color: #100e0e92;
+}
+
+nav[role="navigation"] {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    transform: none;
+    text-align: center;
+}

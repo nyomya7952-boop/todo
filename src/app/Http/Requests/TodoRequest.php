@@ -25,7 +25,8 @@ class TodoRequest extends FormRequest
     {
         return [
             'content' => ['required', 'string', 'max:20'],
-            // 'content' => ['required', 'regex:/^[^0-9]+$/', 'max:20'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'due_date' => ['nullable', 'date'],
         ];
     }
 
@@ -36,6 +37,9 @@ class TodoRequest extends FormRequest
             'content.string' => 'Todoを文字列で入力してください',
             'content.max' => 'Todoは20文字以内で入力してください',
             'content.regex' => 'Todoに数字は使用できません',
+            'category_id.required' => 'カテゴリを選択してください',
+            'category_id.exists' => 'カテゴリが存在しません',
+            'due_date.date' => '期限日を選択してください',
         ];
     }
 }

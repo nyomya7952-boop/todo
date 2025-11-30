@@ -17,6 +17,9 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('content',20);
+            $table->boolean('is_completed')->default(false);
+            $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
+            $table->date('due_date')->nullable();
             $table->timestamps();
         });
     }
