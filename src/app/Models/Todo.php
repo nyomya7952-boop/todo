@@ -9,7 +9,7 @@ use App\Models\Category;
 class Todo extends Model
 {
     use HasFactory;
-    protected $fillable = ['category_id', 'content'];
+    protected $fillable = ['category_id', 'content', 'is_completed', 'priority', 'due_date'];
 
     public function category()
     {
@@ -28,6 +28,32 @@ class Todo extends Model
     {
         if (!empty($keyword)) {
             $query->where('content', 'like', '%' . $keyword . '%');
+        }
+        return $query;
+    }
+
+    public function scopePrioritySearch($query, $priority)
+    {
+        if (!empty($priority)) {
+            $query->where('priority', $priority);
+        }
+        return $query;
+    }
+
+    public function scopeDueDateSearch($query, $due_date)
+    {
+        if (!empty($due_date)) {
+            $query->where('due_date', $due_date);
+        }
+        return $query;
+    }
+
+    public function scopeIsCompletedSearch($query, $is_completed)
+    {
+        if ($is_completed == '1') {
+            $query->where('is_completed', 1);
+        } elseif ($is_completed == '0') {
+            $query->where('is_completed', 0);
         }
         return $query;
     }

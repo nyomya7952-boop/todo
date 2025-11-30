@@ -1,0 +1,10 @@
+exclude:
+    - .env
+    - .env.*
+    - secrets/**
+    - keys/**
+    - storage/logs/**
+    - storage/framework/**
+    - vendor/**
+    - node_modules/**
+    - .git/**
