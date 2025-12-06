@@ -17,9 +17,8 @@ class TodoFactory extends Factory
         return [
             'content' => $this->faker->text(20),
             'category_id' => Category::factory(),
-            'priority' => $this->faker->randomElement(['low', 'medium', 'high']),
+            // priority を設定しない場合、データベースのデフォルト値（'medium'）が使用される
             'due_date' => $this->faker->date,
-            'is_completed' => $this->faker->boolean(20),
         ];
     }
 }

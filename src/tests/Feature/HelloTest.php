@@ -382,10 +382,10 @@ class HelloTest extends TestCase
     {
         $category = Category::factory()->create();
         
+        // priority を指定しないことで、データベースのデフォルト値（'medium'）が使用される
         $todo = Todo::factory()->create([
             'category_id' => $category->id,
-            'content' => 'テスト',
-            'priority' => null
+            'content' => 'テスト'
         ]);
 
         // マイグレーションでデフォルト値がmediumに設定されているため
@@ -402,10 +402,10 @@ class HelloTest extends TestCase
     {
         $category = Category::factory()->create();
         
+        // is_completed を指定しないことで、データベースのデフォルト値（false）が使用される
         $todo = Todo::factory()->create([
             'category_id' => $category->id,
-            'content' => 'テスト',
-            'is_completed' => null
+            'content' => 'テスト'
         ]);
 
         // マイグレーションでデフォルト値がfalseに設定されているため
